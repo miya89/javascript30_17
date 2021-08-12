@@ -13,3 +13,16 @@ const bands = [
   "Anywhere But Here",
   "An Old Dog",
 ];
+
+//sort this array in an alphabetical order ignoring articles
+
+const sortedBands = bands.sort((a, b) =>
+  stripArticle(a) > stripArticle(b) ? 1 : -1
+);
+function stripArticle(bandName) {
+  return bandName.replace(/^(a |the |an )/i, "").trim();
+}
+
+document.querySelector("#bands").innerHTML = sortedBands
+  .map((band) => `<li>${band}</li>`)
+  .join("");
